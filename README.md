@@ -1,97 +1,33 @@
+﻿# ðŸ“Š PHP Arrays & Algorithmic Data Structures
 
-# 📄 README – Práctica Arrays + Tienda Comics
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-8.x-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP" />
+  <img src="https://img.shields.io/badge/Algorithms-Data_Structures-047857?style=for-the-badge" alt="Data Structures" />
+  <img src="https://img.shields.io/badge/Academic-1Âº_DAW_STUCOM-10B981?style=for-the-badge" alt="STUCOM" />
+</p>
 
-## 🧩 Práctica 3 – Arrays en PHP Ignacio Breñas Muñoz 1 DAW STUCOM 
-
-En esta práctica he desarrollado los **8 ejercicios de arrays** en el archivo `ArraysPHP_IgnacioBreñasMuñoz_DAW1.php`.  
-Todos los ejercicios están **comentados** para explicar las decisiones y el funcionamiento:
-
-1. **Array asociativo** (persona) y muestra de **valores** con `foreach`.
-2. Muestra de **clave + valor** del mismo array.
-3. **Modificación** de la edad a **24** y reimpresión del array.
-4. **Eliminación** de la clave `ciudad` y salida con `var_dump`.
-5. **explode()** a partir de `"a,b,c,d,e,f"` y **orden descendente** (`rsort`).
-6. **Notas** en array asociativo y **ordenado** de mayor a menor (`arsort`).
-7. **Media** con **2 decimales** y **alumnos por encima** de la media.
-8. **Nota máxima** con su **alumno** usando `max()` y `array_search()`.
-
-> Archivo: `ArraysPHP_IgnacioBreñasMuñoz_DAW1.php`.
+> ðŸŽ“ **Academic Project Notice:** Laboratory exercises for the **1st year of Web Application Development (DAW)** at **STUCOM Pelai** (Barcelona) within the Server-Side Web Development module (MP0487).
 
 ---
 
-## 🏪 Tienda Comics – Inventario y mejoras
+## ðŸ“Œ Overview / DescripciÃ³n General
 
-Para el ejercicio de la tienda trabajé a partir de `miTiendaComics.php`.  
-Entrego dos versiones:
+### ðŸ‡¬ðŸ‡§ English
+Academic lab exercises on advanced array data structures in **PHP**. It covers indexed and associative arrays, multidimensional matrix transformations, array iteration (oreach), built-in sorting algorithms (sort, sort, ksort), and array filtering/mapping.
 
-- `TiendaComics_1.0` → **Tal y como se me entregó.**
-- `TiendaComics_2.0` → **Con las correcciones y mejoras pedidas.**
-
-
-## 🔢 Diferencias entre 1.0 y 2.0
-
-### ✅ Versión 1.0 (estado inicial)
-
-- `mostrarComicsEnTabla()` **funciona** y pinta la tabla.
-- `mostrarValorAlmacen()` está **pendiente** (sin implementar).
-- `aplicarDescuentoManga()` **solo recorre la categoría** `accion` y aplica 30% si `idioma == 'Japonés'`.  
-  Eso deja **sin descuento** los mangas en otras categorías (p. ej. `suspense_terror`).  
-  Además, **modifica solo una parte** del inventario; si se añaden más categorías, no se aplicaría el descuento ahí.
-
-**Resumen:** se ve la tabla y el flujo “antes/después” del descuento, pero **el valor del almacén no se calcula** y **el descuento es parcial** (limitado a una categoría).
+### ðŸ‡ªðŸ‡¸ EspaÃ±ol
+PrÃ¡cticas de programaciÃ³n sobre estructuras de datos en **PHP**. Cubre arrays indexados y asociativos, matrices multidimensionales, recorridos con bucles oreach, algoritmos de ordenaciÃ³n nativos (sort, sort, ksort) y funciones de mapeo y filtrado.
 
 ---
 
-### 🚀 Versión 2.0 (mejoras aplicadas)
+## ðŸ“‹ Concepts Covered
 
-**Archivo:** `miTiendaComics.php`
-
-1. **Implementación de `mostrarValorAlmacen()`**
-   - Recorre **todas las categorías** y **todos los cómics**.
-   - Suma `precio * stock` en una variable acumulada `$valor`.
-   - Muestra: `Total valor almacen: <importe>`.
-   - Esto permite ver el **impacto real** del descuento en el total del inventario.
-
-2. **Reescritura de `aplicarDescuentoManga()`**
-   - Ahora recorre **todo el inventario**:  
-     ```php
-     foreach ($inventario as $categoria => &$comics) {
-         foreach ($comics as &$comic) {
-             if ($comic['idioma'] == 'Japonés') {
-                 $comic['precio'] = $comic['precio'] * 0.7;
-             }
-         }
-     }
-     ```
-   - Aplica **30% de descuento** a **cualquier cómic** cuyo `idioma` sea `'Japonés'`, esté en la categoría que esté.
-   - Uso de **referencias (`&`)** para asegurarnos de **actualizar** el array original in-place.
-   - La función ahora es **genérica y escalable**: si mañana añado `fantasia`, `scifi`, etc., el descuento se sigue aplicando correctamente.
-
-3. **Salida ordenada del flujo**
-   - Muestro tabla y valor **antes** del descuento; luego **aplico** el descuento; y finalmente **muestro** la tabla y el valor **después**.  
-   - Esto deja claro el **antes/después** tanto en **precios unitarios** como en el **valor total** del almacén.
+- ðŸ”¢ **Multidimensional Matrices:** Representing tabular datasets and nested collections.
+- ðŸ”€ **Sorting & Filtering:** Custom callback sorting with usort() and filtering with rray_filter().
+- ðŸ” **Search & Aggregation:** Aggregations with rray_sum(), in_array(), and rray_key_exists().
 
 ---
 
-## 🆚 Resumen rápido
+## ðŸ“„ License
 
-- **1.0**
-  - ❌ `mostrarValorAlmacen()` sin implementar.  
-  - ⚠️ `aplicarDescuentoManga()` solo afecta a `accion`.  
-  - ✔️ Tabla HTML correcta.
-
-- **2.0**
-  - ✔️ `mostrarValorAlmacen()` suma `precio * stock` de **todo** el inventario.  
-  - ✔️ `aplicarDescuentoManga()` recorre **todas** las categorías y aplica **30%** si `idioma == 'Japonés'`.  
-  - ✔️ Demostración clara **antes/después** (tabla + total).
-
----
-
-## 📂 Archivos de la entrega
-
-- `Arrays.php` – Ejercicios 1–8 comentados.
-- `miTiendaComics.php` – Vercion corregida con los commits realizados 
-
-- `README.md` – Este documento.
-
----
+Distributed under the **MIT License**.
